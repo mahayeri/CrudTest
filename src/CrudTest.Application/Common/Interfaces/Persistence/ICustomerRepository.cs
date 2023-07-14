@@ -8,7 +8,7 @@ public interface ICustomerRepository
 	/// </summary>
 	/// <param name="customerId">CustomerId.</param>
 	/// <returns>Customer.</returns>
-	Task<Customer> GetByIdAsync(CustomerId customerId);
+	Task<Customer?> GetByIdAsync(CustomerId customerId);
 
 	/// <summary>
 	///     Adds the Customer.
