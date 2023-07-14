@@ -27,6 +27,11 @@ public sealed class Customer : AggregateRoot<CustomerId>
 		Email = email;
 		BankAccountNumber = bankAccountNumber;
 	}
+
+	/// <summary>
+	/// static method to create a new instance of the customer class
+	/// </summary>
+	/// <returns>Customer</returns>
 	public static Customer Create(
 		string firstName,
 		string lastName,
