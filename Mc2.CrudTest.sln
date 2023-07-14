@@ -11,13 +11,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mc2.CrudTest.Presentation.S
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mc2.CrudTest.AcceptanceTests", "Mc2.CrudTest.AcceptanceTests\Mc2.CrudTest.AcceptanceTests.csproj", "{6776DF76-1054-486C-A79A-57100C47032F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CrudTest.Domain", "src\CrudTest.Domain\CrudTest.Domain.csproj", "{8B5B894C-B296-4F7D-9FA0-256AF48C0E24}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CrudTest.Domain", "src\CrudTest.Domain\CrudTest.Domain.csproj", "{8B5B894C-B296-4F7D-9FA0-256AF48C0E24}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CrudTest.Application", "src\CrudTest.Application\CrudTest.Application.csproj", "{5DA9C30C-94B1-4A55-AA6B-372EB3B0773A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CrudTest.Application", "src\CrudTest.Application\CrudTest.Application.csproj", "{5DA9C30C-94B1-4A55-AA6B-372EB3B0773A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CrudTest.Infrastructure", "src\CrudTest.Infrastructure\CrudTest.Infrastructure.csproj", "{6BB109CB-CFEF-4782-8A23-17D3F4FF3159}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CrudTest.Infrastructure", "src\CrudTest.Infrastructure\CrudTest.Infrastructure.csproj", "{6BB109CB-CFEF-4782-8A23-17D3F4FF3159}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CrudTest.Api", "src\CrudTest.Api\CrudTest.Api.csproj", "{8D014B49-A1BA-42CD-9059-D8281E9BB088}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CrudTest.Api", "src\CrudTest.Api\CrudTest.Api.csproj", "{8D014B49-A1BA-42CD-9059-D8281E9BB088}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CrudTest.Contracts", "src\CrudTest.Contracts\CrudTest.Contracts.csproj", "{E3132522-7939-4214-93DA-EF4794269F5A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -57,6 +59,10 @@ Global
 		{8D014B49-A1BA-42CD-9059-D8281E9BB088}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8D014B49-A1BA-42CD-9059-D8281E9BB088}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8D014B49-A1BA-42CD-9059-D8281E9BB088}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E3132522-7939-4214-93DA-EF4794269F5A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E3132522-7939-4214-93DA-EF4794269F5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E3132522-7939-4214-93DA-EF4794269F5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E3132522-7939-4214-93DA-EF4794269F5A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

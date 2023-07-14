@@ -14,6 +14,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\CrudTest.Application\CrudTest.Application.csproj" />
+    <ProjectReference Include="..\CrudTest.Contracts\CrudTest.Contracts.csproj" />
     <ProjectReference Include="..\CrudTest.Infrastructure\CrudTest.Infrastructure.csproj" />
   </ItemGroup>
 
