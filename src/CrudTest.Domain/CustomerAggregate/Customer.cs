@@ -1,8 +1,9 @@
 ﻿using CrudTest.Domain.Common.Models;
+using CrudTest.Domain.CustomerAggregate.Events;
 using CrudTest.Domain.CustomerAggregate.ValueObjects;
 
 namespace CrudTest.Domain.CustomerAggregate;
-public sealed class Customer : AggregateRoot<CustomerId>
+public sealed class Customer : AggregateRoot<CustomerId, Guid>
 {
 	public string FirstName { get; private set; }
 	public string LastName { get; private set; }
@@ -10,7 +11,6 @@ public sealed class Customer : AggregateRoot<CustomerId>
 	public string PhoneNumber { get; private set; }
 	public string Email { get; private set; }
 	public string BankAccountNumber { get; private set; }
-
 	private Customer(
 		CustomerId id,
 		string firstName,
@@ -40,7 +40,7 @@ public sealed class Customer : AggregateRoot<CustomerId>
 		string email,
 		string bankAccountNumber)
 	{
-		return new(
+		Customer customer = new(
 			CustomerId.CreateUnique(),
 			firstName,
 			lastName,
@@ -48,5 +48,12 @@ public sealed class Customer : AggregateRoot<CustomerId>
 			phoneNumber,
 			email,
 			bankAccountNumber);
+
+		customer.AddDomainEvent(new CustomerCreatedEvent(customer));
+
+		return customer;
 	}
+#pragma warning disable CS8618
+	private Customer() { }
+#pragma warning restore CS8618
 }
