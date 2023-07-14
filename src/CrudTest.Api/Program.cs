@@ -1,6 +1,7 @@
 using CrudTest.Api;
 using CrudTest.Application;
 using CrudTest.Infrastructure;
+using CrudTest.Infrastructure.Persistence;
 
 var builder = WebApplication.CreateBuilder(args);
 {
@@ -18,9 +19,14 @@ var app = builder.Build();
     {
         app.UseSwagger();
         app.UseSwaggerUI();
+
+        // Initialise and seed database
+        using var scope = app.Services.CreateScope();
+        var initializer = scope.ServiceProvider.GetRequiredService<ApplicationDbContextInitializer>();
+        await initializer.InitialiseAsync();
     }
 
-    app.UseExceptionHandler("/error");
+    //app.UseExceptionHandler("/error");
     app.UseHttpsRedirection();
     app.UseAuthorization();
     app.MapControllers();

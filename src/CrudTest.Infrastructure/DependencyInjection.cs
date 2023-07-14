@@ -26,6 +26,7 @@ public static class DependencyInjection
                     builder.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName);
                 }));
 
+        services.AddScoped<ApplicationDbContextInitializer>();
         services.AddScoped<PublishDomainEventsInterceptor>();
         services.AddScoped<ICustomerRepository, CustomerRepository>();
 
