@@ -1,14 +1,12 @@
 ﻿using CrudTest.Api.Common.Http;
 using ErrorOr;
 using MediatR;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 
 namespace CrudTest.Api.Controllers;
 
 [ApiController]
-[Authorize]
 public class ApiController : ControllerBase
 {
     private ISender _mediator = null!;
