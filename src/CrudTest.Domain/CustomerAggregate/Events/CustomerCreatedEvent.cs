@@ -1,10 +1,5 @@
-﻿namespace CrudTest.Domain.CustomerAggregate.Events;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using CrudTest.Domain.Common.Models;
 
-internal class CustomerCreatedEvent
-{
-}
+namespace CrudTest.Domain.CustomerAggregate.Events;
+
+public sealed record CustomerCreatedEvent(Customer Customer) : IDomainEvent;
