@@ -10,11 +10,9 @@ public sealed class CreateCustomerCommandValidator : AbstractValidator<CreateCus
 {
     private readonly PhoneNumberUtil _phoneNumberUtil;
     private readonly IbanValidator _ibanValidator;
-    private readonly ICustomerRepository _customerRepository;
 
     public CreateCustomerCommandValidator(ICustomerRepository customerRepository)
     {
-        _customerRepository = customerRepository;
         _phoneNumberUtil = PhoneNumberUtil.GetInstance();
         _ibanValidator = new IbanValidator();
 
@@ -30,7 +28,8 @@ public sealed class CreateCustomerCommandValidator : AbstractValidator<CreateCus
 
         RuleFor(x => x.Email)
             .NotEmpty()
-            .MustAsync(_customerRepository.IsEmailUniqueAsync)
+            .EmailAddress()
+            .MustAsync(customerRepository.IsEmailUniqueAsync)
             .WithMessage(CustomerValidationErrorMessages.UniqueEmailErrorMessage);
     }
 
@@ -38,7 +37,7 @@ public sealed class CreateCustomerCommandValidator : AbstractValidator<CreateCus
     {
         try
         {
-            const string internationalRegion = "US";
+            const string internationalRegion = "IR";
             var phoneNumber = _phoneNumberUtil.Parse(phoneNumberStr, internationalRegion);
             return _phoneNumberUtil.IsValidNumber(phoneNumber) &&
                    _phoneNumberUtil.GetNumberType(phoneNumber) == PhoneNumberType.MOBILE;

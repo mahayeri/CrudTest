@@ -26,7 +26,7 @@ public class CustomerController : ApiController
         ErrorOr<string> createCustomerResult = await Mediator.Send(command, ct);
 
         return createCustomerResult.Match(
-            onValue: createCustomerResult => Ok(_mapper.Map<CustomerIdResponse>(createCustomerResult)),
+            onValue: Ok,
             Problem);
     }
 }

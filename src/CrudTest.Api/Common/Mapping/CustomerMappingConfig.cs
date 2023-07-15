@@ -9,9 +9,8 @@ public class CustomerMappingConfig : IRegister
     public void Register(TypeAdapterConfig config)
     {
         config.NewConfig<CreateCustomerRequest, CreateCustomerCommand>()
-            .Map(d => d, s => s);
+            .Map(d => d, s => s)
+            .MapToConstructor(true);
 
-        config.NewConfig<string, CustomerIdResponse>()
-            .Map(d => d.Id, s => s);
     }
 }

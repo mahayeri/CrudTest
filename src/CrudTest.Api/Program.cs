@@ -26,7 +26,7 @@ var app = builder.Build();
         await initializer.InitialiseAsync();
     }
 
-    //app.UseExceptionHandler("/error");
+    app.UseExceptionHandler("/error");
     app.UseHttpsRedirection();
     app.UseAuthorization();
     app.MapControllers();
