@@ -1,6 +1,6 @@
 ﻿using CrudTest.Application.Common.Interfaces.Messaging;
 
-namespace CrudTest.Application.Customers.Command;
+namespace CrudTest.Application.Customers.Command.CreateCustomer;
 
 public sealed record CreateCustomerCommand(
     string FirstName,

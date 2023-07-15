@@ -3,7 +3,7 @@ using CrudTest.Application.Common.Interfaces.Persistence;
 using CrudTest.Domain.CustomerAggregate;
 using ErrorOr;
 
-namespace CrudTest.Application.Customers.Command;
+namespace CrudTest.Application.Customers.Command.CreateCustomer;
 internal sealed class CreateCustomerCommandHandler : ICommandHandler<CreateCustomerCommand, string>
 {
     private readonly ICustomerRepository _customerRepository;
