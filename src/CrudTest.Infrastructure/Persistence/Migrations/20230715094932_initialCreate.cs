@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace CrudTest.Infrastructure.CrudTest.Infrastructure.Persistence.Migrations
+namespace CrudTest.Infrastructure.Persistence.Migrations
 {
     /// <inheritdoc />
     public partial class initialCreate : Migration
