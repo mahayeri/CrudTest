@@ -39,5 +39,7 @@ public sealed class CustomerRepository : ICustomerRepository
         if (customer is null) return;
 
         _context.Customers.Remove(customer);
+
+        await _context.SaveChangesAsync();
     }
 }

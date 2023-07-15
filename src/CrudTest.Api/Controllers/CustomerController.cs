@@ -1,4 +1,5 @@
 ﻿using CrudTest.Application.Customers.Command.CreateCustomer;
+using CrudTest.Application.Customers.Command.DeleteCustomer;
 using CrudTest.Application.Customers.Command.UpdateCustomer;
 using CrudTest.Contracts.Customers;
 using ErrorOr;
@@ -43,6 +44,20 @@ public class CustomerController : ApiController
 
         return updateCustomerResult.Match(
             onValue: updateCustomerResult => NoContent(),
+            Problem);
+    }
+
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> DeleteCustomer(
+        Guid id,
+        CancellationToken ct)
+    {
+        var command = new DeleteCustomerCommand(id);
+
+        ErrorOr<bool> deleteCustomerResult = await Mediator.Send(command, ct);
+
+        return deleteCustomerResult.Match(
+            onValue: deleteCustomerResult => NoContent(),
             Problem);
     }
 }
