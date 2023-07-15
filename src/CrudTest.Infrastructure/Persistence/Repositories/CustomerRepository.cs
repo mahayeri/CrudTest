@@ -21,6 +21,12 @@ public sealed class CustomerRepository : ICustomerRepository
         return customer;
     }
 
+    public async Task<List<Customer>> GetListAsync(CancellationToken cancellationToken)
+    {
+        List<Customer> customers = await _context.Customers.ToListAsync(cancellationToken);
+        return customers;
+    }
+
     public async Task Add(Customer customer)
     {
         await _context.AddAsync(customer);

@@ -8,34 +8,29 @@ namespace CrudTest.Infrastructure.Persistence;
 
 public sealed class ApplicationDbContext : DbContext
 {
-	private readonly PublishDomainEventsInterceptor _publishDomainEventsInterceptor;
-	public ApplicationDbContext(
-		DbContextOptions<ApplicationDbContext> options, PublishDomainEventsInterceptor publishDomainEventsInterceptor)
-		: base(options)
-	{
-		_publishDomainEventsInterceptor = publishDomainEventsInterceptor;
-	}
+    private readonly PublishDomainEventsInterceptor _publishDomainEventsInterceptor;
+    public ApplicationDbContext(
+        DbContextOptions<ApplicationDbContext> options, PublishDomainEventsInterceptor publishDomainEventsInterceptor)
+        : base(options)
+    {
+        _publishDomainEventsInterceptor = publishDomainEventsInterceptor;
+    }
 
-	public DbSet<Customer> Customers => Set<Customer>();
+    public DbSet<Customer> Customers => Set<Customer>();
 
 
-	protected override void OnModelCreating(ModelBuilder builder)
-	{
-		builder
-			.Ignore<List<IDomainEvent>>()
-			.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+    protected override void OnModelCreating(ModelBuilder builder)
+    {
+        builder
+            .Ignore<List<IDomainEvent>>()
+            .ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
 
-		base.OnModelCreating(builder);
-	}
+        base.OnModelCreating(builder);
+    }
 
-	protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-	{
-		optionsBuilder.AddInterceptors(_publishDomainEventsInterceptor);
-		base.OnConfiguring(optionsBuilder);
-	}
-
-	public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
-	{
-		return await base.SaveChangesAsync(cancellationToken);
-	}
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    {
+        optionsBuilder.AddInterceptors(_publishDomainEventsInterceptor);
+        base.OnConfiguring(optionsBuilder);
+    }
 }

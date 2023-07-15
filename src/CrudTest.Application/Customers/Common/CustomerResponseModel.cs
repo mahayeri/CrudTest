@@ -1,7 +1,7 @@
 ﻿namespace CrudTest.Application.Customers.Common;
 
 public sealed record CustomerResponseModel(
-    string Id,
+    Guid Id,
     string FirstName,
     string LastName,
     DateTime DateOfBirth,

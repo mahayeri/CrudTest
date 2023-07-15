@@ -11,6 +11,13 @@ public interface ICustomerRepository
     Task<Customer?> GetByIdAsync(CustomerId customerId, CancellationToken cancellationToken);
 
     /// <summary>
+    ///     Gets the list of customers from db.
+    /// </summary>
+    /// <param name="cancellationToken"></param>
+    /// <returns>Customers List</returns>
+    Task<List<Customer>> GetListAsync(CancellationToken cancellationToken);
+
+    /// <summary>
     ///     Adds the Customer.
     /// </summary>
     /// <param name="customer">Customer object.</param>

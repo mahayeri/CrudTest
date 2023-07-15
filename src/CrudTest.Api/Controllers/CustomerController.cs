@@ -1,6 +1,9 @@
 ﻿using CrudTest.Application.Customers.Command.CreateCustomer;
 using CrudTest.Application.Customers.Command.DeleteCustomer;
 using CrudTest.Application.Customers.Command.UpdateCustomer;
+using CrudTest.Application.Customers.Common;
+using CrudTest.Application.Customers.Queries.GetCustomer;
+using CrudTest.Application.Customers.Queries.GetCustomerList;
 using CrudTest.Contracts.Customers;
 using ErrorOr;
 using MapsterMapper;
@@ -17,6 +20,31 @@ public class CustomerController : ApiController
     {
         _mapper = mapper;
     }
+
+    [HttpGet]
+    public async Task<IActionResult> GetCustomers(CancellationToken ct)
+    {
+        var query = new GetCustomerListQuery();
+
+        ErrorOr<List<CustomerResponseModel>> customersResult = await Mediator.Send(query, ct);
+
+        return customersResult.Match(
+            onValue: customersResult => Ok(_mapper.Map<List<CustomerResponse>>(customersResult)),
+            Problem);
+    }
+
+    [HttpGet("{id}")]
+    public async Task<IActionResult> GetCustomers(Guid id, CancellationToken ct)
+    {
+        var query = new GetCustomerQuery(id);
+
+        ErrorOr<CustomerResponseModel> customerResult = await Mediator.Send(query, ct);
+
+        return customerResult.Match(
+            onValue: customerResult => Ok(_mapper.Map<CustomerResponse>(customerResult)),
+            Problem);
+    }
+
 
     [HttpPost]
     public async Task<IActionResult> CreateCustomer(
