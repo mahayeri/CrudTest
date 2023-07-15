@@ -1,4 +1,5 @@
-﻿using CrudTest.Application.Customers.Command;
+﻿using CrudTest.Application.Customers.Command.CreateCustomer;
+using CrudTest.Application.Customers.Command.UpdateCustomer;
 using CrudTest.Contracts.Customers;
 using ErrorOr;
 using MapsterMapper;
@@ -27,6 +28,21 @@ public class CustomerController : ApiController
 
         return createCustomerResult.Match(
             onValue: Ok,
+            Problem);
+    }
+
+    [HttpPut("{id}")]
+    public async Task<IActionResult> UpdateCustomer(
+        Guid id,
+        UpdateCustomerRequest request,
+        CancellationToken ct)
+    {
+        var command = _mapper.Map<UpdateCustomerCommand>((id, request));
+
+        ErrorOr<bool> updateCustomerResult = await Mediator.Send(command, ct);
+
+        return updateCustomerResult.Match(
+            onValue: updateCustomerResult => NoContent(),
             Problem);
     }
 }
