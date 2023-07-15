@@ -21,14 +21,6 @@ public sealed class CustomerRepository : ICustomerRepository
         return customer;
     }
 
-    public async Task<bool> IsEmailUniqueAsync(string email, CancellationToken cancellationToken)
-    {
-        var isEmailUnique = await _context.Customers
-            .AllAsync(c => c.Email != email, cancellationToken);
-
-        return isEmailUnique;
-    }
-
     public async Task Add(Customer customer)
     {
         await _context.AddAsync(customer);

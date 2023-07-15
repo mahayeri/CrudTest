@@ -11,12 +11,6 @@ public interface ICustomerRepository
     Task<Customer?> GetByIdAsync(CustomerId customerId, CancellationToken cancellationToken);
 
     /// <summary>
-    ///		Checks the database if this email is unique
-    /// </summary>
-    /// <param name="email">email</param>
-    /// <returns>bool.</returns>
-    Task<bool> IsEmailUniqueAsync(string email, CancellationToken cancellationToken);
-    /// <summary>
     ///     Adds the Customer.
     /// </summary>
     /// <param name="customer">Customer object.</param>

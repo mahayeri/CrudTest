@@ -1,7 +1,9 @@
 ﻿using CrudTest.Application.Common.Interfaces.Persistence;
+using CrudTest.Application.Common.Interfaces.Validations;
 using CrudTest.Infrastructure.Persistence;
 using CrudTest.Infrastructure.Persistence.Interceptors;
 using CrudTest.Infrastructure.Persistence.Repositories;
+using CrudTest.Infrastructure.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -29,6 +31,7 @@ public static class DependencyInjection
         services.AddScoped<ApplicationDbContextInitializer>();
         services.AddScoped<PublishDomainEventsInterceptor>();
         services.AddScoped<ICustomerRepository, CustomerRepository>();
+        services.AddScoped<ICustomerValidation, CustomerValidation>();
 
         return services;
     }
