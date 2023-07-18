@@ -17,6 +17,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\CrudTest.Domain\CrudTest.Domain.csproj" />
+	  <InternalsVisibleTo Include="CrudTest.Application.UnitTests" />
   </ItemGroup>
 
 </Project>
