@@ -47,4 +47,4 @@ The application enforces the following validations:
 
 ### Storage Optimization
 
-- To optimize storage space, the application stores phone numbers in the database using either `ulong`, which occupies less space. This ensures efficient resource utilization.
+- To optimize storage space, the application stores phone numbers in the database using `ulong`, which occupies less space. This ensures efficient resource utilization.
